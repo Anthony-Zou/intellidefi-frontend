@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+# IntelliDeFi Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An intelligent DeFi investment platform that offers ETF-like portfolios tailored to different risk profiles. This project uses React with TypeScript and is containerized with Docker for easy development and deployment.
 
-## Available Scripts
+## 🚀 Quick Start
 
-In the project directory, you can run:
+### Prerequisites
 
-### `npm start`
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Starting the Development Server
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+# Start with Docker
+docker-compose up
+```
 
-### `npm test`
+The application will be available at http://localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Development
 
-### `npm run build`
+### Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/        # UI components
+├── context/           # React context providers
+├── hooks/             # Custom React hooks
+├── pages/             # Page components
+├── services/          # API and contract services
+├── utils/             # Utility functions
+├── constants/         # Constants and configuration
+├── types/             # TypeScript type definitions
+└── styles/            # Global styles
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running Commands
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run commands inside the Docker container:
 
-### `npm run eject`
+```bash
+docker-compose exec intellidefi-frontend npm <command>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For example, to install a new package:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+docker-compose exec intellidefi-frontend npm install <package-name>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Available Scripts
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Start development server:
 
-## Learn More
+  ```bash
+  docker-compose up
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Run tests:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ```bash
+  docker-compose exec intellidefi-frontend npm test
+  ```
+
+- Build for production:
+  ```bash
+  docker-compose run --rm intellidefi-frontend npm run build
+  ```
+
+## 🏗️ Building for Production
+
+To build and run a production-optimized version:
+
+1. Build the production Docker image:
+
+   ```bash
+   docker build -f Dockerfile.prod -t intellidefi-frontend:prod .
+   ```
+
+2. Run the production container:
+   ```bash
+   docker run -p 80:80 intellidefi-frontend:prod
+   ```
+
+The production build will be available at http://localhost

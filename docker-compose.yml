@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  intellidefi-frontend:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_ETH_NETWORK=localhost
+      - REACT_APP_CONTRACT_ADDRESS=0x5FbDB2315678afecb367f032d93F642f64180aa3
+    stdin_open: true
+    tty: true

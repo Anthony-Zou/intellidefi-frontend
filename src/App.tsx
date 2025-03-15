@@ -1,25 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Web3Provider } from './context/Web3Context';
+import Navbar from './components/layout/Navbar';
+import Dashboard from './components/dashboard/Dashboard';
+import RiskAssessment from './components/risk/RiskAssessment';
+import PortfolioCreation from './components/portfolio/PortfolioCreation';
+import Trading from './components/trading/Trading';
+
+
+// Updated placeholder components with better UI
+// const RiskAssessment = () => (
+//   <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
+//     <h2 className="text-2xl font-bold mb-4">Risk Assessment</h2>
+//     <div className="space-y-4">
+//       <div className="p-4 bg-gray-50 rounded-md">
+//         <h3 className="text-lg font-semibold mb-2">Risk Profile Analysis</h3>
+//         <p className="text-gray-600">Complete your risk assessment to get personalized investment recommendations.</p>
+//       </div>
+//     </div>
+//   </div>
+// );
+
+
+
+
+
+const NotFound = () => (
+  <div className="flex flex-col items-center justify-center min-h-[60vh]">
+    <h2 className="text-4xl font-bold text-gray-800 mb-4">404</h2>
+    <p className="text-xl text-gray-600">Page Not Found</p>
+  </div>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Web3Provider>
+      <Router>
+        <div className="min-h-screen bg-gray-100">
+          <Navbar />
+          <div className="container mx-auto px-4 py-8">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/risk-assessment" element={<RiskAssessment />} />
+              <Route path="/create-portfolio" element={<PortfolioCreation />} />
+              <Route path="/trading" element={<Trading />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </Web3Provider>
   );
 }
 
