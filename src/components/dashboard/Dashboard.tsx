@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useWeb3 } from '../../context/Web3Context';
-import { WalletIcon, ChartLineIcon, ExchangeAltIcon } from '../../utils/icons';
+import { WalletIcon, ChartLineIcon, ExchangeAltIcon, RobotIcon } from '../../utils/icons';
 import { Line } from 'react-chartjs-2';
 import { 
   Chart as ChartJS, 
@@ -157,6 +158,35 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* New Eliza AI Feature Callout */}
+      {isConnected && !loading && (
+        <div className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-md overflow-hidden">
+          <div className="md:flex items-center">
+            <div className="px-6 py-8 md:w-2/3">
+              <div className="flex items-center mb-4">
+                <RobotIcon className="text-white text-2xl mr-3" />
+                <h3 className="text-xl font-bold text-white">Meet Eliza: Your Blockchain AI Assistant</h3>
+              </div>
+              <p className="text-blue-100 mb-4">Eliza is our new multimodal AI assistant specialized in blockchain and finance. Ask questions, get market insights, analyze contracts, and more - all through a natural conversation.</p>
+              <Link 
+                to="/eliza-ai"
+                className="inline-flex items-center px-4 py-2 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+              >
+                Chat with Eliza
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
+            </div>
+            <div className="md:w-1/3 bg-blue-800 bg-opacity-30 p-6 hidden md:flex justify-center items-center">
+              <div className="w-24 h-24 bg-white bg-opacity-10 rounded-full flex items-center justify-center">
+                <span className="text-5xl">🤖</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded-xl shadow-md">

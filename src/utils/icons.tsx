@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconType } from 'react-icons';
-import { FaWallet, FaChartLine, FaExchangeAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaWallet, FaChartLine, FaExchangeAlt, FaBars, FaTimes, FaRobot, FaImage, FaCode } from 'react-icons/fa';
 
 interface IconProps {
   className?: string;
@@ -19,3 +19,6 @@ export const ChartLineIcon = createIconComponent(FaChartLine);
 export const ExchangeAltIcon = createIconComponent(FaExchangeAlt);
 export const BarsIcon = createIconComponent(FaBars);
 export const TimesIcon = createIconComponent(FaTimes);
+export const RobotIcon = createIconComponent(FaRobot);
+export const ImageIcon = createIconComponent(FaImage);
+export const CodeIcon = createIconComponent(FaCode);

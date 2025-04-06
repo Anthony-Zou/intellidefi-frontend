@@ -4,7 +4,7 @@ import { useWeb3 } from '../../context/Web3Context';
 import { WalletIcon, BarsIcon, TimesIcon } from '../../utils/icons';
 
 const Navbar = () => {
-  const { account, connectWallet, disconnectWallet, isConnected } = useWeb3();
+  const { account, connectWallet, isConnected } = useWeb3();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -62,6 +62,17 @@ const Navbar = () => {
             >
               Trading
             </Link>
+            <Link
+              to="/eliza"
+              className={`${
+                isActiveLink('/eliza')
+                  ? 'text-blue-600 border-b-2 border-blue-600'
+                  : 'text-gray-500 hover:text-blue-600'
+              } px-3 py-2 text-sm font-medium flex items-center`}
+            >
+              <span className="mr-1">Eliza AI</span>
+              <span className="bg-blue-100 text-blue-800 text-xs px-1.5 py-0.5 rounded-full">New</span>
+            </Link>
 
             <div className="ml-4">
               {isConnected ? (
@@ -72,12 +83,12 @@ const Navbar = () => {
                       {account?.substring(0, 6)}...{account?.substring(account.length - 4)}
                     </span>
                   </div>
-                  <button
+                  {/* <button
                     onClick={disconnectWallet}
                     className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
                     Disconnect
-                  </button>
+                  </button> */}
                 </div>
               ) : (
                 <button
@@ -147,6 +158,17 @@ const Navbar = () => {
             >
               Trading
             </Link>
+            <Link
+              to="/eliza"
+              className={`${
+                isActiveLink('/eliza')
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-500 hover:bg-gray-50'
+              } block px-3 py-2 rounded-md text-base font-medium flex items-center`}
+            >
+              <span>Eliza AI</span>
+              <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-1.5 py-0.5 rounded-full">New</span>
+            </Link>
             <div className="mt-4 px-3">
               {isConnected ? (
                 <div className="space-y-2">
@@ -158,12 +180,12 @@ const Navbar = () => {
                       </span>
                     </div>
                   </div>
-                  <button
+                  {/* <button
                     onClick={disconnectWallet}
                     className="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
                     Disconnect
-                  </button>
+                  </button> */}
                 </div>
               ) : (
                 <button

@@ -6,24 +6,8 @@ import Dashboard from './components/dashboard/Dashboard';
 import RiskAssessment from './components/risk/RiskAssessment';
 import PortfolioCreation from './components/portfolio/PortfolioCreation';
 import Trading from './components/trading/Trading';
-
-
-// Updated placeholder components with better UI
-// const RiskAssessment = () => (
-//   <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
-//     <h2 className="text-2xl font-bold mb-4">Risk Assessment</h2>
-//     <div className="space-y-4">
-//       <div className="p-4 bg-gray-50 rounded-md">
-//         <h3 className="text-lg font-semibold mb-2">Risk Profile Analysis</h3>
-//         <p className="text-gray-600">Complete your risk assessment to get personalized investment recommendations.</p>
-//       </div>
-//     </div>
-//   </div>
-// );
-
-
-
-
+import ElizaChat from './components/eliza/ElizaChat';
+import HomePage from './pages/HomePage';
 
 const NotFound = () => (
   <div className="flex flex-col items-center justify-center min-h-[60vh]">
@@ -40,10 +24,11 @@ function App() {
           <Navbar />
           <div className="container mx-auto px-4 py-8">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/risk-assessment" element={<RiskAssessment />} />
               <Route path="/create-portfolio" element={<PortfolioCreation />} />
               <Route path="/trading" element={<Trading />} />
+              <Route path="/eliza" element={<ElizaChat />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
